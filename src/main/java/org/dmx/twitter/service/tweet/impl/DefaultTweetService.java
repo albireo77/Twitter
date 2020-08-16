@@ -1,7 +1,7 @@
 package org.dmx.twitter.service.tweet.impl;
 
 import org.dmx.twitter.error.EntityNotFoundException;
-import org.dmx.twitter.error.Errors;
+import org.dmx.twitter.error.TwitterError;
 import org.dmx.twitter.model.Tweet;
 import org.dmx.twitter.model.User;
 import org.dmx.twitter.repository.tweet.TweetRepository;
@@ -61,7 +61,7 @@ public class DefaultTweetService implements TweetService {
     private User findUser(String userId) {
         User user = userService.get(userId);
         if (user == null) {
-            throw new EntityNotFoundException("User " + userId + " not found", Errors.USER_NOT_FOUND);
+            throw new EntityNotFoundException("User " + userId + " not found", TwitterError.USER_NOT_FOUND);
         }
         return user;
     }

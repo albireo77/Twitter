@@ -1,13 +1,13 @@
 package org.dmx.twitter.error;
 
-public enum Errors {
+public enum TwitterError {
     USER_NOT_FOUND(1),
     TWEET_TEXT_EMPTY(2),
     TWEET_TEXT_TOO_LONG(3);
 
     private int code;
 
-    Errors(int code) {
+    TwitterError(int code) {
         this.code = code;
     }
 
@@ -15,10 +15,10 @@ public enum Errors {
         return code;
     }
 
-    public static Errors findByCode(int code) {
-        for (Errors errors : values()) {
-            if (errors.getCode() == code) {
-                return errors;
+    public static TwitterError findByCode(int code) {
+        for (TwitterError error : values()) {
+            if (error.getCode() == code) {
+                return error;
             }
         }
         return null;

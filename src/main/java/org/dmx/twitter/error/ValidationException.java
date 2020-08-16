@@ -2,19 +2,19 @@ package org.dmx.twitter.error;
 
 public class ValidationException extends RuntimeException {
 
-    private Errors errors;
+    private TwitterError error;
 
-    public ValidationException(String message, Errors errors) {
+    public ValidationException(String message, TwitterError error) {
         super(message);
-        this.errors = errors;
+        this.error = error;
     }
 
-    public ValidationException(String message, Errors errors, Throwable cause) {
+    public ValidationException(String message, TwitterError error, Throwable cause) {
         super(message, cause);
-        this.errors = errors;
+        this.error = error;
     }
 
-    public Errors getError() {
-        return errors;
+    public TwitterError getError() {
+        return error;
     }
 }

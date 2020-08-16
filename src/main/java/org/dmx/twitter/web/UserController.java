@@ -1,7 +1,7 @@
 package org.dmx.twitter.web;
 
 import org.dmx.twitter.error.ApplicationError;
-import org.dmx.twitter.error.Errors;
+import org.dmx.twitter.error.TwitterError;
 import org.dmx.twitter.error.EntityNotFoundException;
 import org.dmx.twitter.model.User;
 import org.dmx.twitter.service.user.UserService;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 import java.util.Set;
 
 
@@ -47,7 +47,7 @@ public class UserController {
         LOG.info("Getting user {}", userId);
         User user = userService.get(userId);
         if (user == null) {
-            throw new EntityNotFoundException("User " + userId + " not found", Errors.USER_NOT_FOUND);
+            throw new EntityNotFoundException("User " + userId + " not found", TwitterError.USER_NOT_FOUND);
         }
         return ResponseEntity.ok(user);
     }

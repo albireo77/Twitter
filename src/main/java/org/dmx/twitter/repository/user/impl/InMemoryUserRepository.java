@@ -2,7 +2,7 @@ package org.dmx.twitter.repository.user.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.dmx.twitter.error.Errors;
+import org.dmx.twitter.error.TwitterError;
 import org.dmx.twitter.error.EntityNotFoundException;
 import org.dmx.twitter.model.User;
 import org.dmx.twitter.repository.user.UserRepository;
@@ -74,7 +74,7 @@ public class InMemoryUserRepository implements UserRepository {
     private User find(String userId) {
         User user = get(userId);
         if (user == null) {
-            throw new EntityNotFoundException("User " + userId + " not found", Errors.USER_NOT_FOUND);
+            throw new EntityNotFoundException("User " + userId + " not found", TwitterError.USER_NOT_FOUND);
         }
         return user;
     }
