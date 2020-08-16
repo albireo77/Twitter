@@ -21,6 +21,9 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public User get(String userId) {
+        if (userId == null) {
+            return null;
+        }
         return userRepository.get(userId);
     }
 
